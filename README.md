@@ -4,7 +4,7 @@
 # Project 1
 
 
-# 🌍 Global Happiness Insights: A Machine Learning Approach
+## 🌍 Global Happiness Insights: A Machine Learning Approach
 **Predicting National Happiness Scores using Socio-Economic Indicators**
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
