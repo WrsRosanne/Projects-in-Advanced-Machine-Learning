@@ -142,4 +142,70 @@ One of the most significant technical insights was the discovery of the **"Norma
 *Special thanks to the QMSS program at Columbia University for providing the deep learning frameworks and datasets for this research.*
 
 
+---
+
+# Project 3
+
+## 🧠 Advanced NLP: Sentiment Classification on the SST-2 Dataset
+**Comparative Analysis of Transformers, CNNs, and Bi-LSTMs with Data Integrity Auditing**
+
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Transformers-yellow)](https://huggingface.co/transformers/)
+
+## 📌 Project Overview
+Can machine learning models truly understand human sentiment, or are they just memorizing patterns? This project explores binary sentiment classification using the **Stanford Sentiment Treebank (SST-2)**. We evolved our approach from basic Feed-Forward networks to state-of-the-art **BERT** architectures, emphasizing the critical role of **Data Integrity** in modern NLP.
+
+A defining feature of this research was the discovery and mitigation of **Data Leakage**. We moved beyond raw accuracy to implement a rigorous "Clean-Room" evaluation pipeline, ensuring our models' performance reflects true linguistic generalization rather than simple dataset memorization.
+
+---
+
+## 🛠️ Tech Stack
+* **Frameworks:** PyTorch, Hugging Face Transformers, Scikit-learn
+* **Architectures:** BERT (Base-Uncached), Bi-LSTM (CuDNN optimized), CNN Text Classifier
+* **Techniques:** Masked LM Data Augmentation, Hyperparameter Tuning (Optuna/RandomSearch)
+* **Data Engineering:** Receptive Field Optimization, Leakage Detection (Intersection Auditing)
+* **Evaluation:** F1-Score, Error Reduction Rate, Confusion Matrix Analysis
+
+---
+
+## 📊 Key Research Findings
+
+### 1. The Data Integrity Breakthrough (Leakage Mitigation)
+The most significant technical insight was the identification of a systemic **Data Leakage** issue within the dataset's phrase-level decomposition.
+* **The Discovery:** Initial evaluations yielded a suspicious **98% accuracy**. Upon auditing, we found **1,018 overlapping sentences** between the training and test sets.
+* **The Solution:** We implemented a "Leakage-Free" pipeline, manually de-duplicating the corpus and re-initializing the models. This resulted in a robust and honest **92.45% accuracy** for our top-tier model—a score that represents true SOTA performance on a clean SST-2 test set.
+
+### 2. BERT-Based Semantic Augmentation
+To combat the limitations of small-sample learning, we developed a manual **Masked Language Modeling (MLM)** augmentation strategy.
+* **Mechanism:** Using `bert-base-uncased`, we performed contextual synonym replacement on the training set.
+* **Impact:** This forced the model to learn **Semantic Invariance** (understanding that sentiment remains constant even when specific words change). This "Augmented BERT" outperformed the standard baseline by stabilizing the decision boundary.
+
+### 3. Architecture Rivalry: Bi-LSTM vs. CNN
+Our experiments challenged the assumption that CNNs are always superior for local text features:
+* **Bi-LSTM (79.88%):** Proved more effective at capturing long-range semantic dependencies and "sentiment flips" (e.g., irony/negation).
+* **CNN (77.77%):** While efficient, the CNN was more sensitive to hyperparameter Search Space constraints, occasionally converging on suboptimal local minima despite automated tuning.
+
+---
+
+## 🚀 How to Run
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/WrsRosanne/Projects-in-Advanced-Machine-Learning.git](https://github.com/WrsRosanne/Projects-in-Advanced-Machine-Learning.git)
+    ```
+2.  **Install dependencies:**
+    ```bash
+    pip install pandas numpy torch transformers matplotlib seaborn scikit-learn
+    ```
+3.  **Run the Notebook:**
+    Open `QMSSGR5074_Project_3_Group_1_Final.ipynb` in Google Colab (T4 GPU or better) and execute the cells. The notebook includes the final "Clean-Room" training logic.
+
+---
+
+## 👥 Contributors
+* **Rongshan Wei**
+* **Haoxuan Lu**
+* **Lindsay Varzarevsky**
+
+*Special thanks to the QMSS program at Columbia University for providing the datasets and computational frameworks for this advanced NLP research.*
 
